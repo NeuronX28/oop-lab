@@ -1,39 +1,38 @@
-package week2;
+
 import java.util.Scanner;
 
-public class rev {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the size of the array: ");
-        int size = scanner.nextInt();
-        int[] array = new int[size];
-        System.out.println("Enter elements of the array:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Element " + (i + 1) + ": ");
-            array[i] = scanner.nextInt();
+class Array {
+    public static void main(String args[]) {
+        int n, j;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter no of elements: ");
+        n = sc.nextInt();
+        int arr[], arr1[];
+        arr = new int[n];
+        arr1 = new int[n];
+
+        System.out.println("Enter Elements:");
+        for (int i = 0; i < n; i++) {
+            j = sc.nextInt();
+            arr[i] = j;
         }
 
-        System.out.println("Original Array:");
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-        int start = 0;
-        int end = size - 1;
-        while (start < end) {
-            int temp = array[start];
-            array[start] = array[end];
-            array[end] = temp;
-            start++;
-            end--;
+       int[] temp = arr.clone();
+
+        for (int i = 0; i < n; i++) {
+            // Reverse the number
+            int reversedNum = 0;
+            while (temp[i] != 0) {
+                int digit = temp[i] % 10;
+                reversedNum = reversedNum * 10 + digit;
+                temp[i] = temp[i] / 10;
+            }
+            arr1[i] = reversedNum;
         }
 
-        System.out.println("Reversed Array:");
-        for (int num : array) {
-            System.out.print(num + " ");
+        System.out.println("Original\tReversed ");
+        for (int i = 0; i < n; i++) {
+            System.out.println(arr[i] + "\t" + arr1[i]);
         }
-        System.out.println();
-
-        scanner.close();
     }
 }
