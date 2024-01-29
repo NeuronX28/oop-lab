@@ -1,84 +1,82 @@
 import java.util.Scanner;
 
-    class ok {
-    Scanner sc=new Scanner(System.in);
-    int item_id;
-    String item_name;
-    int quantity;
-    int unitprice;
-    int totalbill;
+class discount{
+	Double itemid;
+	String itemname;
+	Double quantity;
+	Double unit_price;
+	Double totalbill;
+		Scanner sc = new Scanner (System.in);
 
-    void getdata(){
-    System.out.println("Enter the item:");
-    item_id=sc.nextInt();
-    System.out.println("Enter the item_name:");
-    item_name=sc.nextLine();
-    System.out.println("enter quantity");
-    quantity=sc.nextInt();
-    System.out.println("Enter the price for 1 unit");
-    unitprice=sc.nextInt();
-    System.out.println("Enter the totalbill");
-    totalbill=sc.nextInt();
-    
-}
-};
+	public void getdata(){
+		System.out.println("Enter item ID ");
+		itemid = sc.nextDouble();
 
-class shop{
-    public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter the number of n");
-        int n=sc.nextInt();
-        ok array[]=new ok[n];
-        
-        int ch,i=0;
-        do{
-            System.out.println("Enter your choice:");
-            System.out.println("\n1.To enter the details of customers order\n2.0 to exit");
-            ch=sc.nextInt();
-            switch(ch)
-            {
-            case 1:
-            for(i=1;i<n;i++)
-          {   array[i]=new ok();
-            array[i].getdata();
-          
-            if(array[i].totalbill<500)
-            {
-              System.out.println("discount is "+"NO DISCOUNT!");
-            }
-            else if(array[i].totalbill<=1000 && array[i].totalbill>=500)
-            {
-              System.out.println("Discount is"+"10%");
-            }
-            else if(array[i].totalbill<=2000 && array[i].totalbill>=2000)
-            {
-              System.out.println("Discount is 12%");
-            }
-            else if(array[i].totalbill>2000)
-            {
-              System.out.println("Discount is 15%");
-            }
-          }
-            break;
-            default:
-            if(ch==0)
-            {
-              System.out.println("Invalid!");
-              return;
-            }
-        }
-        }while(ch!=0);
-        sc.close();
+		System.out.println("Enter item name ");
+		 itemname = sc.next();
 
+		System.out.println("Enter unit price ");
+		unit_price = sc.nextDouble();
 
-        
-        
+		System.out.println("Enter NUmber of pieces ");
+				quantity = sc.nextDouble();
+		}
+
+		public void display(){
+			totalbill= unit_price*quantity;
+			if(totalbill <500){
+				System.out.println("Your total bill is : "+ totalbill);
+				}
+
+				else if( totalbill>500 && totalbill<1000){
+					totalbill=totalbill-(totalbill*0.1);
+					System.out.println("Woah!! you got 10% discount");
+					System.out.println("Your total bill is : "+ totalbill);
+					}
+				else if( totalbill>1000 && totalbill<1500){
+					totalbill=totalbill-(totalbill*0.12);
+					System.out.println("Woah!! you got 12% discount");
+				    System.out.println("Your total bill is : "+ totalbill);
+					}
+				else if( totalbill>2000){
+					totalbill=totalbill-(totalbill*0.15);
+					System.out.println("Woah!! you got 15% discount");
+					System.out.println("Your total bill is : "+ totalbill);
+					}
+			}
+
+	}
+
+	public class shop{
+		public static void main(String args[]){
+			Scanner sc = new Scanner (System.in);
+
+			int choice;
+			discount data = new discount();
+
+			while(true)
+			{
+
+				System.out.println("Enter your choice \n 1.Bill input \t 2.Total bill \t 3.EXIT");
+				choice = sc.nextInt();
+				switch(choice){
+					case 1 :
+					data.getdata();
+					break;
+					case 2 :
+					data.display();
+					break;
+
+					case 3 :
+					System.exit(0);
+					break;
 
 
+					default :
+					System.out.println("Invalid input");
+				}
 
+				}
 
-       
-
-    }
-    
-}
+			}
+		}
