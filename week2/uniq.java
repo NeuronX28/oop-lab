@@ -1,39 +1,33 @@
-package week2;
-
 import java.util.Scanner;
 
-public class uniq {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter row and col :");
-        int[][] arr1;
-        int row = sc.nextInt();
-        int col = sc.nextInt();
-        System.out.println("enter array element :");
-        int [][] arr= new int[row][col];
+class Array_Unique{
+	static int total;
+	public static void main(String args[]){
+		int a[][],b[],i,j;
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter array size: ");
+		a=new int[sc.nextInt()][sc.nextInt()];
+		b=new int[a.length*a[0].length];
+		System.out.print("Enter array elments: ");
+		for(i=0;i<a.length;i++)
+			for(j=0;j<a[i].length;j++){
+				a[i][j]=sc.nextInt();
+				insert1D(b,a[i][j]);
+			}
 
-        for( int i=0; i<row; i++){
-            for (int j=0; j<col; j++){
-                arr[i][j]=sc.nextInt();
-            }
-        }
-        System.out.println("elemets of 2d array");
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                if (arr[i] == arr[j])
-                break;
-                System.out.print(arr[i][j]+" ");
-                
-            }
-                 System.out.println();
-        }
-        
-   
-
-             sc.close();
-
-    }
-    
-
-
+		System.out.println("Unique elements: ");
+		for(i=0;i<total;i++)
+			System.out.print(b[i]+" ");
+	}
+	static void insert1D(int[] b,int ele){
+		boolean flag=true;
+		for(int i=0;i<total;i++){
+			if(ele==b[i]){
+				flag=false;
+				break;
+			}
+		}
+		if(flag)
+			b[total++]=ele;
+	}
 }
