@@ -1,6 +1,11 @@
 //name : vishweshwar shinde
 //reg:230970059
-
+/* Consider a class called Points with x-coordinate and y-coordinate as its data members.
+Create three objects P1, P2 and P3, which represent three points in a plane.
+• Calculate and the distance between P1 and P2 (by passing the coordinates of one point
+as arguments).
+• Calculate and the distance between P1 and P3 (by passing one point itself as argument).
+*/
 import java.util.*;
 
 public class Points{
